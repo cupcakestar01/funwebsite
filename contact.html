@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangle Bliss Studio - Contact</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // 2. Initialize EmailJS with your actual Public Key
+            emailjs.init("iaKLRGf60yOaJ1KYV");
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <span class="studio-name">Bangle Bliss Studio</span>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Design Studio</a></li>
+                    <li><a href="gallery.html">Inspiration Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact-wrapper">
+        <h1 class="page-title">Contact Us</h1>
+        
+        <form id="contact-form" class="checkout-form">
+            <div class="input-group">
+                <label for="user-name">Your Name</label>
+                <input type="text" id="user-name" required placeholder="Jane Doe">
+            </div>
+
+            <div class="input-group">
+                <label for="user-email">Your Email Address</label>
+                <input type="email" id="user-email" required placeholder="jane@example.com">
+            </div>
+
+            <div class="input-group">
+                <label for="user-message">Message</label>
+                <textarea id="user-message" rows="4" required placeholder="Type your simulation feedback here..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangle Bliss - Studio</title>
+    <link rel="stylesheet" href="final.css">
+</head>
+<body>
+
+    <header>
+        <h1>BANGLE BLISS</h1>
+        <p>Design your custom masterpiece bead-by-bead!</p>
+    </header>
+
+    <nav>
+        <a href="index.html" class="active">Design Studio</a>
+        <a href="gallery.html">Inspiration Gallery</a>
+        <a href="checkout.html">Checkout</a>
+    </nav>
+
+    <main class="container">
+        <h2 class="section-title">1. Create Your Bracelet</h2>
+        
+        <div class="preview-window">
+            <div class="bracelet-string" id="braceletString"></div>
+        </div>
+
+        <div class="bead-selector">
+            <div class="color-option" style="background-color: #ff477e;" onclick="addBead('#ff477e')"></div>
+            <div class="color-option" style="background-color: #ff85a2;" onclick="addBead('#ff85a2')"></div>
+            <div class="color-option" style="background-color: #f7b267;" onclick="addBead('#f7b267')"></div>
+            <div class="color-option" style="background-color: #ffd166;" onclick="addBead('#ffd166')"></div>
+            <div class="color-option" style="background-color: #06d6a0;" onclick="addBead('#06d6a0')"></div>
+            <div class="color-option" style="background-color: #118ab2;" onclick="addBead('#118ab2')"></div>
+            <div class="color-option" style="background-color: #7209b7;" onclick="addBead('#7209b7')"></div>
+            <div class="color-option" style="background-color: #ffffff;" onclick="addBead('#ffffff')"></div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-undo" onclick="undoLastBead()">Undo Last</button>
+            <button class="btn btn-clear" onclick="clearBracelet()">Clear All</button>
+            <button class="btn btn-order" onclick="goToCheckout()">Ready to Order! &rarr;</button>
+        </div>
+    </main>
+
+    <footer><p>&copy; 2026 Bangle Bliss Studio | AP CSP Final Project</p></footer>
+
+    <script>
+        const braceletContainer = document.getElementById('braceletString');
+        let beadArray = [];
+
+        function addBead(color) {
+            if (beadArray.length >= 16) {
+                alert("Your bracelet is completely full!");
+                return;
+            }
+            beadArray.push(color);
+            renderBracelet();
+        }
+
+        function undoLastBead() {
+            beadArray.pop();
+            renderBracelet();
+        }
+
+        function clearBracelet() {
+            beadArray = [];
+            renderBracelet();
+        }
+
+        function renderBracelet() {
+            braceletContainer.innerHTML = '';
+            beadArray.forEach(color => {
+                const bead = document.createElement('div');
+                bead.className = 'bead';
+                bead.style.backgroundColor = color;
+                braceletContainer.appendChild(bead);
+            });
+        }
+
+        function goToCheckout() {
+            if (beadArray.length === 0) {
+                alert("Please add some beads to your bracelet before checking out!");
+                return;
+            }
+            // Save the bead array in browser memory so checkout can read it
+            localStorage.setItem('savedBracelet', JSON.stringify(beadArray));
+            window.location.href = 'checkout.html';
+        }
+    </script>
+</body>
+</html>

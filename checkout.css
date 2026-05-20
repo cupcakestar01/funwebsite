@@ -1,0 +1,133 @@
+/* ==========================================
+   FUN & VIBRANT CHECKOUT PAGE STYLES 
+   ========================================== */
+
+/* ---- Checkout Layout & Cards ---- */
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Responsive wrap for smaller screens */
+@media (max-width: 768px) {
+    .checkout-layout { 
+        grid-template-columns: 1fr; 
+    }
+}
+
+.order-summary-box {
+    background: linear-gradient(135deg, #fff0f3 0%, #ffdee9 100%); /* Bright cotton-candy gradient */
+    border-radius: 20px;
+    padding: 25px;
+    border: 3px solid #ffb7b2;
+    box-shadow: 0 8px 20px rgba(255, 117, 143, 0.15);
+}
+
+.order-summary-box h3 {
+    font-family: 'Fredoka One', cursive;
+    color: #c9184a;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---- Fun Math & Price Rows ---- */
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #495057;
+}
+
+.total-row {
+    border-top: 4px dashed #ff758f;
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 1.6rem;
+    color: #c9184a;
+}
+
+/* Animated pulsing effect on the total price to make it pop! */
+#totalPriceText {
+    background-color: #ff477e;
+    color: white;
+    padding: 2px 14px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(255, 71, 126, 0.3);
+    animation: pricePulse 2s infinite;
+}
+
+@keyframes pricePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); background-color: #ff758f; }
+    100% { transform: scale(1); }
+}
+
+/* ---- Super Colorful Form Inputs ---- */
+#orderForm {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 3px solid #ccfbf1; /* Bright mint border */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Fredoka One', cursive;
+    color: #118ab2; /* Bright electric teal labels */
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 18px;
+    border: 3px solid #e2e8f0;
+    border-radius: 15px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #2d3748;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+/* Magic input glow when the user clicks to type */
+.form-group input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #06d6a0; /* Smooth transition to neon mint */
+    box-shadow: 0 0 15px rgba(6, 214, 160, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ---- Giant Checkout Button ---- */
+#orderForm .btn-order {
+    width: 100%;
+    background: linear-gradient(135deg, #06d6a0 0%, #118ab2 100%); /* Vibrant green-to-blue gradient */
+    font-size: 1.3rem;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: 0 6px 15px rgba(6, 214, 160, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#orderForm .btn-order:hover {
+    background: linear-gradient(135deg, #118ab2 0%, #06d6a0 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(17, 138, 178, 0.4);
+}
