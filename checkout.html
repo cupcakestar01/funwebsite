@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangle Bliss - Secure Checkout</title>
     <link rel="stylesheet" href="checkout.css">
-    
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            // SUCCESS CHECK: Replace this string with your real Public Key from EmailJS Account tab
-            emailjs.init("iaKLRGf60yOaJ1KYV"); 
-        })();
-    </script>
 </head>
 <body>
 
@@ -34,7 +26,8 @@
             <div class="order-summary-box">
                 <h3>Your Custom Design:</h3>
                 <div class="preview-window" style="padding: 20px 10px; margin: 15px 0;">
-                    <div class="bracelet-string" id="checkoutBraceletString"></div>
+                    <div class="bracelet-string" id="checkoutBraceletString">
+                        </div>
                 </div>
                 
                 <div class="price-row">
@@ -52,7 +45,7 @@
             </div>
 
             <div>
-                <form id="orderForm">
+                <form id="orderForm" onsubmit="submitOrder(event)">
                     <div class="form-group">
                         <label for="userName">Full Name</label>
                         <input type="text" id="userName" required placeholder="Jane Doe">
@@ -73,6 +66,40 @@
 
     <footer><p>&copy; 2026 Bangle Bliss Studio | AP CSP Final Project</p></footer>
 
-    <script src="script.js"></script>
+    <script>
+        // 1. Grab the saved bracelet data from the browser's local storage memory
+        const storedData = localStorage.getItem('savedBracelet');
+        const beadArray = storedData ? JSON.parse(storedData) : [];
+        const container = document.getElementById('checkoutBraceletString');
+
+        // 2. Loop through the saved colors and dynamically draw the beads onto the screen
+        beadArray.forEach(color => {
+            const bead = document.createElement('div');
+            bead.className = 'bead';
+            bead.style.backgroundColor = color;
+            container.appendChild(bead);
+        });
+
+        // 3. AP CSP Math: Calculate pricing ($0.25 per individual bead + $5 base price)
+        const count = beadArray.length;
+        const beadCost = count * 0.25;
+        const total = 5.00 + beadCost;
+
+        // 4. Update the text elements on the screen with our calculated values
+        document.getElementById('beadCountText').innerText = count;
+        document.getElementById('beadPriceText').innerText = `$${beadCost.toFixed(2)}`;
+        document.getElementById('totalPriceText').innerText = `$${total.toFixed(2)}`;
+
+        // 5. Handle form submission
+        function submitOrder(e) {
+            e.preventDefault(); // Prevents the page from refreshing automatically
+            const name = document.getElementById('userName').value;
+            alert(`Thank you for your order, ${name}! Your custom Bangle Bliss order has been processed successfully (Mock Simulation).`);
+            
+            // Clear out the memory and take them back to the studio start page
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>
